@@ -26,9 +26,23 @@ class Product {
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
+
+    addToStock(quantity) {
+        this.stockQuantity += quantity;
+        this.logStockToConsole();
+    }
+
+    removeFromStock(quantity) {
+        this.stockQuantity -= quantity;
+        this.logStockToConsole();
+    }
+
+    logStockToConsole() {
+        console.log(`Current stock for ${this.productName} is now ${this.stockQuantity}.`);
+    }
 }
 
-const product1 = new Product('Bicicleta', 750, 1000);
+const bike = new Product('Bicicleta', 750, 1000);
 
 
 const product2 = {
@@ -37,8 +51,26 @@ const product2 = {
     stockQuantity: 1000
 }
 
-const product3 = new Product('Laptop', 2500, 300);
+const laptop = new Product('Laptop', 2500, 300);
 
-console.log(product1);
+console.log(bike);
 console.log(product2);
-console.log(product3);
+console.log(laptop);
+
+// Metodele
+/**
+ * Metodele sunt definite în interiorul claselor,
+ *  nu au nevoie de cuvantul cheie function ca în cazul funcțiilor și sunt utilizate pentru a organiza și a realiza operațiuni specifice asociate cu o clasa sau un obiect creat din acea clasa.
+Metodele au acces la cuvantul special this care in contextul unei clase reprezinta instanta (obiectul) 
+curent pe care se apeleaza metoda cu toate proprietățile initializate in constructor.
+ */
+
+bike.addToStock(100);
+console.log(bike);
+
+laptop.removeFromStock(200);
+console.log(laptop);
+
+laptop.addToStock(300);
+laptop.removeFromStock(300);
+laptop.addToStock(200);
